@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -17,13 +17,16 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Get file changes
+      - name: Paths Changes Filter
         id: get_file_changes
-        uses: trilom/file-changes-action@v1.2.4
+        uses: dorny/paths-filter@v3.0.2
         with:
-          output: " "
+          list-files: escape
+          filters: |
+            yml:
+              - added|modified: '**/*.yml'
 
-      - name: Run dbt checkpoint
+      - name: Run dbt Checkpoint
         uses: dbt-checkpoint/action@v0.1
         with:
           extra_args: >
