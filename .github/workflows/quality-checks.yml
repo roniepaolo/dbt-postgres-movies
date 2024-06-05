@@ -6,9 +6,7 @@ on:
 
 jobs:
   dbt-qchecks:
-    runs-on:
-      group: SelfHostedDefault
-      labels: ubuntu-22.04-micro
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
