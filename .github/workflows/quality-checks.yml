@@ -28,7 +28,7 @@ jobs:
 
       - name: Run dbt Checkpoint
         uses: dbt-checkpoint/action@v0.1
-        if: ${{ steps.get_file_changes.outputs.models == 'true' }}
+        # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         with:
           extra_args: --files ${{ steps.get_file_changes.outputs.models_files}}
           dbt_version: 1.7.3
