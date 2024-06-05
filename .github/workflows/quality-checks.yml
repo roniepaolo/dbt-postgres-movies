@@ -5,7 +5,7 @@ on:
   - push
 
 jobs:
-  dbt-qchecks:
+  dbt:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
         with:
           list-files: escape
           filters: |
-            yml:
-              - added|modified: '**/*.yml'
+            models-and-props:
+              - added|modified: '**/*.{sql,yml,yaml}'
 
       - name: Run dbt Checkpoint
         uses: dbt-checkpoint/action@v0.1
