@@ -27,7 +27,7 @@ jobs:
               - added|modified: '**/*.{sql,yml,yaml}'
 
       - name: Run dbt Checkpoint
-        if: ${{ steps.get_file_changes.outputs.sql == 'true' }}
+        if: ${{ steps.get_file_changes.outputs.models_and_props == 'true' }}
         uses: dbt-checkpoint/action@v0.1
         with:
           extra_args: >
