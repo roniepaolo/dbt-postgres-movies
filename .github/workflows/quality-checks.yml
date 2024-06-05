@@ -24,7 +24,7 @@ jobs:
           output: " "
 
       - name: Run dbt checkpoint
-        uses: dbt-checkpoint/dbt-checkpoint@v2.0.1
+        uses: dbt-checkpoint/action@v0.1
         with:
           extra_args: >
             --files ${{ steps.get_file_changes.outputs.files}}
