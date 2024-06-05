@@ -33,3 +33,10 @@ jobs:
           extra_args: --files ${{ steps.get_file_changes.outputs.models_files}}
           dbt_version: 1.7.3
           dbt_adapter: dbt-snowflake
+        env:
+          DBT_HOST: ${{ secrets.DBT_HOST }}
+          DBT_USER: ${{ secrets.DBT_USER }}
+          DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+          DBT_PORT: ${{ secrets.DBT_PORT }}
+          DBT_DBNAME: ${{ secrets.DBT_DBNAME }}
+          DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
