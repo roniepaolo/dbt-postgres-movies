@@ -31,7 +31,7 @@ jobs:
         # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         with:
           extra_args: --files ${{ steps.get_file_changes.outputs.models_files}}
-          dbt_version: 1.7.3
+          dbt_version: 1.7
           dbt_adapter: dbt-snowflake
         env:
           DBT_HOST: ${{ secrets.DBT_HOST }}
