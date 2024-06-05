@@ -1,0 +1,32 @@
+name: Quality Checks
+
+on:
+  - pull_request
+
+jobs:
+  dbt-qchecks:
+    runs-on:
+      group: SelfHostedDefault
+      labels: ubuntu-22.04-micro
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - id: Get file changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: " "
+
+      - name: Run dbt checkpoint
+        uses: dbt-checkpoint/dbt-checkpoint@v2.0.1
+        with:
+          extra_args: >
+            --files ${{ steps.get_file_changes.outputs.files}}
+          dbt_version: 1.7.3
+          dbt_adapter: dbt-snowflake
