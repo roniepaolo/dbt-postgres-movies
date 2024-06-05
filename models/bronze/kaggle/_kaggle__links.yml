@@ -9,4 +9,3 @@ models:
       - name: imdbid
         description: IMDB ID
       - name: tmdbid
-        description: TMDB ID
