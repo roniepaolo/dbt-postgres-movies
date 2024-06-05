@@ -1,7 +1,8 @@
 name: Quality Checks
 
 on:
-  - pull_request
+  # - pull_request
+  - push
 
 jobs:
   dbt-qchecks:
