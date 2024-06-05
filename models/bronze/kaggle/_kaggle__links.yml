@@ -9,4 +9,3 @@ models:
       - name: imdbid
         description: Movie ID
       - name: tmdbid
-        description: Movie ID
