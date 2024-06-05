@@ -23,14 +23,13 @@ jobs:
         with:
           list-files: escape
           filters: |
-            models_and_props:
-              - added|modified: '**/*.{sql,yml,yaml}'
+            models:
+              - added|modified: 'models/**/*.{sql,yml,yaml}'
 
       - name: Run dbt Checkpoint
-        if: ${{ steps.get_file_changes.outputs.models_and_props == 'true' }}
         uses: dbt-checkpoint/action@v0.1
+        if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         with:
-          extra_args: >
-            --files ${{ steps.get_file_changes.outputs.models_and_props_files}}
+          extra_args: --files ${{ steps.get_file_changes.outputs.models_files}}
           dbt_version: 1.7.3
           dbt_adapter: dbt-snowflake
