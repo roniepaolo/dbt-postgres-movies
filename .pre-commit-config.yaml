@@ -2,5 +2,6 @@ repos:
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.1
     hooks:
+      - id: dbt-deps
       - id: dbt-parse
       - id: check-model-columns-have-desc
