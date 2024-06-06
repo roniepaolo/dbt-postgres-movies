@@ -12,6 +12,5 @@ repos:
             "++project-dir",
             ".",
             "++no-partial-parse",
-            "--",
           ]
       - id: check-model-columns-have-desc
