@@ -8,12 +8,13 @@ jobs:
   dbt:
     runs-on: ubuntu-latest
     env:
-      DBT_HOST: ${{ secrets.DBT_HOST }}
-      DBT_USER: ${{ secrets.DBT_USER }}
-      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
-      DBT_PORT: ${{ secrets.DBT_PORT }}
-      DBT_DBNAME: ${{ secrets.DBT_DBNAME }}
-      DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
+      SNOWFLAKE_ACCOUNT_ID: ${{ secrets.SNOWFLAKE_ACCOUNT_ID }}
+      SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
+      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      SNOWFLAKE_USER_ROLE: ${{ secrets.SNOWFLAKE_USER_ROLE }}
+      SNOWFLAKE_DATABASE_NAME: ${{ secrets.SNOWFLAKE_DATABASE_NAME }}
+      SNOWFLAKE_WAREHOUSE_NAME: ${{ secrets.SNOWFLAKE_WAREHOUSE_NAME }}
+      SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
 
     steps:
       - name: Checkout Repository
