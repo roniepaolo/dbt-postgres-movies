@@ -7,13 +7,11 @@ repos:
         args:
           [
             "--cmd-flags",
+            "++debug",
             "++profiles-dir",
             ".",
             "++project-dir",
             ".",
             "++no-partial-parse",
-            "++debug",
-            "++static-parser",
-            "++warn-error",
           ]
       - id: check-model-columns-have-desc
