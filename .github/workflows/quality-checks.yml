@@ -39,5 +39,5 @@ jobs:
         with:
           extra_args: --files ${{ steps.get_file_changes.outputs.models_files}}
           dbt_version: 1.7.3
-          # dbt_adapter: dbt-snowflake
-          dbt_adapter: dbt-postgres
+          dbt_adapter: dbt-snowflake
+          # dbt_adapter: dbt-postgres
