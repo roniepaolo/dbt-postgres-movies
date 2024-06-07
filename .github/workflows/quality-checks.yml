@@ -41,7 +41,8 @@ jobs:
         uses: dbt-checkpoint/action@v0.1
         # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         with:
-          extra_args: -v --files ${{ steps.get_file_changes.outputs.models_files}}
+          # extra_args: -v --files ${{ steps.get_file_changes.outputs.models_files}}
+          extra_args: --all-files
           dbt_version: 1.7.3
           dbt_adapter: dbt-snowflake
           # dbt_adapter: dbt-postgres
