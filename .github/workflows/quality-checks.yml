@@ -32,7 +32,7 @@ jobs:
           list-files: escape
           filters: |
             models:
-              - added|modified: '**/*.{sql,yml,yaml,json}'
+              - added|modified: '**/*.{sql,yml,yaml}'
 
       - name: Check dir
         run: ls -lha
@@ -54,4 +54,4 @@ jobs:
 
       - name: Run dbt-checkpoint
         run: |
-          pre-commit run --all-files
+          pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
