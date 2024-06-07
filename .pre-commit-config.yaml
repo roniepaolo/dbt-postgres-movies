@@ -13,4 +13,4 @@ repos:
       #       ".",
       #       "++no-partial-parse",
       #     ]
-      # - id: check-model-columns-have-desc
+      - id: check-model-columns-have-desc
