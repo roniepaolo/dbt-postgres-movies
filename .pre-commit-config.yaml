@@ -2,8 +2,8 @@ repos:
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.0
     hooks:
-      - id: dbt-deps
-      # - id: dbt-parse
+      # - id: dbt-deps
+      - id: dbt-parse
       #   args:
       #     [
       #       "--cmd-flags",
