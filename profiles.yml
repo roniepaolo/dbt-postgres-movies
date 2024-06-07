@@ -1,12 +1,26 @@
 movies:
   target: dev
   outputs:
+    # dev:
+    #   type: postgres
+    #   host: "{{ env_var('DBT_HOST') }}"
+    #   user: "{{ env_var('DBT_USER') }}"
+    #   password: "{{ env_var('DBT_PASSWORD') }}"
+    #   port: "{{ env_var('DBT_PORT') | as_number }}"
+    #   dbname: "{{ env_var('DBT_DBNAME') }}"
+    #   schema: "{{ env_var('DBT_SCHEMA') }}"
+    #   threads: 1
     dev:
-      type: postgres
-      host: "{{ env_var('DBT_HOST') }}"
-      user: "{{ env_var('DBT_USER') }}"
-      password: "{{ env_var('DBT_PASSWORD') }}"
-      port: "{{ env_var('DBT_PORT') | as_number }}"
-      dbname: "{{ env_var('DBT_DBNAME') }}"
-      schema: "{{ env_var('DBT_SCHEMA') }}"
-      threads: 1
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT_ID') }}"
+
+      # SSO
+      user: "{{ env_var('SNOWFLAKE_USERNAME') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      # authenticator: externalbrowser
+
+      role: "{{ env_var('SNOWFLAKE_USER_ROLE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE_NAME') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE_NAME') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}" # Define own dev_usr schema in .env_var
+
