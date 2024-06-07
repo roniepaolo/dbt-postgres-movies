@@ -5,8 +5,8 @@ models:
     description: Table of movie links
     columns:
       - name: movieid
-        # description: Movie ID
+        description: Movie ID
       - name: imdbid
-        # description: IMDB ID
+        description: IMDB ID
       - name: tmdbid
-        # description: TMDB ID
+        description: TMDB ID
