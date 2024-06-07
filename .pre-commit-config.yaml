@@ -9,9 +9,9 @@ repos:
             "--cmd-flags",
             "++debug",
             "++profiles-dir",
-            ".",
+            "dbt",
             "++project-dir",
-            ".",
+            "dbt",
             "++no-partial-parse",
           ]
       - id: check-model-columns-have-desc
