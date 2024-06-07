@@ -4,14 +4,13 @@ repos:
     hooks:
       # - id: dbt-deps
       - id: dbt-parse
-        args:
-          [
+        args: [
             "--cmd-flags",
             "++profiles-dir",
             ".",
             "++project-dir",
             ".",
-            "++no-partial-parse",
-            "++debug",
+            # "++no-partial-parse",
+            # "++debug",
           ]
       - id: check-model-columns-have-desc
