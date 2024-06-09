@@ -2,16 +2,31 @@ repos:
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.1
     hooks:
-      # - id: dbt-deps
+      # Manifest
       - id: dbt-parse
         args:
           [
             "--cmd-flags",
-            "++debug",
             "++profiles-dir",
             ".",
             "++project-dir",
             ".",
             "++no-partial-parse",
           ]
+      # Model
       - id: check-model-columns-have-desc
+      - id: check-column-desc-are-same
+      - id: check-model-has-all-columns
+      - id: check-model-has-constraints
+      - id: check-model-has-description
+      - id: check-model-has-properties-file
+      - id: check-script-has-no-table-name
+      - id: check-script-ref-and-source
+      # Source
+      - id: check-source-columns-have-desc
+      - id: check-source-has-all-columns
+      - id: check-source-table-has-description
+      - id: check-source-has-freshness
+      # Macro
+      - id: check-macro-has-description
+      - id: check-macro-arguments-have-desc

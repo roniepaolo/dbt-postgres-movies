@@ -25,24 +25,20 @@ jobs:
         with:
           python-version: "3.7"
 
-      - name: Paths Changes Filter
-        id: get_file_changes
-        uses: dorny/paths-filter@v3.0.2
-        with:
-          list-files: escape
-          filters: |
-            models:
-              - '**/*.{sql,yml,yaml}'
-
-      # - name: Run dbt Checkpoint
-      #   uses: dbt-checkpoint/action@v0.1
-      #   # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
+      # - name: Paths Changes Filter
+      #   id: get_file_changes
+      #   uses: dorny/paths-filter@v3.0.2
       #   with:
-      #     # extra_args: -v --files ${{ steps.get_file_changes.outputs.models_files}}
-      #     extra_args: --all-files
-      #     dbt_version: 1.7.3
-      #     dbt_adapter: dbt-snowflake
-      #     # dbt_adapter: dbt-postgres
+      #     list-files: escape
+      #     filters: |
+      #       models:
+      #         - added|modified: 'models/**/*.{sql,yml}'
+
+      # - name: Generate File Pairs
+      #   id: file_pairs
+      #   uses: ./.github/actions/generate-file-pairs
+      #   with:
+      #     changed-files: ${{ steps.get_file_changes.outputs.models_files }}
 
       - name: Install dbt-checkpoint
         run: |
@@ -51,6 +47,5 @@ jobs:
 
       - name: Run dbt-checkpoint
         run: |
-          pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
-          # pre-commit run --files models/bronze/kaggle/_kaggle__links.yml target/manifest.json
-          # pre-commit run --verbose --all-files
+          pre-commit run --all-files
+          # pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
