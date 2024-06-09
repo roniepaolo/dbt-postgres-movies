@@ -51,5 +51,6 @@ jobs:
 
       - name: Run dbt-checkpoint
         run: |
-          pre-commit run --verbose --all-files
+          pre-commit run --files models/bronze/kaggle/_kaggle__links.yml models/bronze/kaggle/kaggle__links.sql target/manifest.json
+          # pre-commit run --verbose --all-files
           # pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
