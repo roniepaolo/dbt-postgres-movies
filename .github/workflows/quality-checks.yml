@@ -34,9 +34,6 @@ jobs:
             models:
               - added|modified: '**/*.{sql,yml,yaml}'
 
-      - name: Check dir
-        run: ls -lha
-
       # - name: Run dbt Checkpoint
       #   uses: dbt-checkpoint/action@v0.1
       #   # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
@@ -54,5 +51,5 @@ jobs:
 
       - name: Run dbt-checkpoint
         run: |
-          pre-commit run --all-files
-          # pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
+          # pre-commit run --all-files
+          pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
