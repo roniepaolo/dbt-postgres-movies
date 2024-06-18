@@ -7,5 +7,5 @@ models:
       - name: movieid
         description: Movie ID
       - name: imdbid
-      - name: tmdbid
         description: Movie ID
+      - name: tmdbid
