@@ -7,14 +7,6 @@ on:
 jobs:
   dbt:
     runs-on: ubuntu-latest
-    env:
-      SNOWFLAKE_ACCOUNT_ID: ${{ secrets.SNOWFLAKE_ACCOUNT_ID }}
-      SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
-      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-      SNOWFLAKE_USER_ROLE: ${{ secrets.SNOWFLAKE_USER_ROLE }}
-      SNOWFLAKE_DATABASE_NAME: ${{ secrets.SNOWFLAKE_DATABASE_NAME }}
-      SNOWFLAKE_WAREHOUSE_NAME: ${{ secrets.SNOWFLAKE_WAREHOUSE_NAME }}
-      SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
 
     steps:
       - name: Checkout Repository
@@ -23,29 +15,35 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.7"
+          python-version: "3.10"
 
-      # - name: Paths Changes Filter
-      #   id: get_file_changes
-      #   uses: dorny/paths-filter@v3.0.2
-      #   with:
-      #     list-files: escape
-      #     filters: |
-      #       models:
-      #         - added|modified: 'models/**/*.{sql,yml}'
-
-      # - name: Generate File Pairs
-      #   id: file_pairs
-      #   uses: ./.github/actions/generate-file-pairs
-      #   with:
-      #     changed-files: ${{ steps.get_file_changes.outputs.models_files }}
-
-      - name: Install dbt-checkpoint
+      - name: Install packages
         run: |
           python -m pip install --upgrade pip
           pip install dbt-core dbt-snowflake pre-commit
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          chmod +x /usr/bin/yq
 
-      - name: Run dbt-checkpoint
+      - name: dbt health verification
         run: |
-          pre-commit run --all-files
-          # pre-commit run --files ${{ steps.get_file_changes.outputs.models_files}}
+          dbt deps
+          dbt compile
+
+      - name: Paths Changes Filter
+        id: get_file_changes
+        uses: dorny/paths-filter@v3.0.2
+        with:
+          list-files: escape
+          filters: |
+            models:
+              - added|modified: 'models/**/*.yml'
+
+      - name: Properties validations
+        run: |
+          set -eux
+          # Check mandatory fields (name, desccription, and columns)
+          yq eval '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' ${{ steps.get_file_changes.outputs.models_files }}
+          # Check name is not empty
+          yq eval '.models.[0].name | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
+          # Check description is not empty
+          yq eval '.models.[0].description | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
