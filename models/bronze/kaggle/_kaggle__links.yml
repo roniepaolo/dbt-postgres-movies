@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - names: kaggle__links
+  - name: kaggle__links
     description: Table of movie links
     columns:
       - name: movieid
