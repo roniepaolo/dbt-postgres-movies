@@ -23,6 +23,7 @@ sources:
       - name: links
         columns:
           - name: movieid
+            description: hola
             data_type: integer
           - name: imdbid
             data_type: integer

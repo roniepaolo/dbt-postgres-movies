@@ -31,7 +31,7 @@ jobs:
           list-files: escape
           filters: |
             models:
-              - added|modified: 'models/**/*.yml'
+              - added|modified: 'models/**/_*.yml'
 
       - name: Properties validations
         run: |
