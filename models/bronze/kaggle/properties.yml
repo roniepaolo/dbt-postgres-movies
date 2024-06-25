@@ -23,9 +23,9 @@ sources:
       - name: links
         columns:
           - name: movieid
-            description: hola
             data_type: integer
           - name: imdbid
+            description: hola
             data_type: integer
           - name: tmdbid
             data_type: integer

@@ -18,10 +18,12 @@ jobs:
           python-version: "3.10"
 
       - name: Install packages
+        env:
+          YQ_VERSION: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         run: |
           python -m pip install --upgrade pip
           pip install dbt-core dbt-snowflake pre-commit
-          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo wget $YQ_VERSION -O /usr/bin/yq
           sudo chmod +x /usr/bin/yq
 
       - name: Paths Changes Filter
@@ -33,12 +35,12 @@ jobs:
             models:
               - added|modified: 'models/**/_*.yml'
 
-      - name: Properties validations
+      - name: Properties Validations
         run: |
           set -eux
           # Check mandatory fields (name, desccription, and columns)
-          yq eval '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval -e 1 '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' ${{ steps.get_file_changes.outputs.models_files }}
           # Check name is not empty
-          yq eval '.models.[0].name | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval -e 1 '.models.[0].name | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
           # Check description is not empty
-          yq eval '.models.[0].description | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval -e 1 '.models.[0].description | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
