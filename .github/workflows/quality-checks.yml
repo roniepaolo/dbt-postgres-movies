@@ -34,13 +34,22 @@ jobs:
           filters: |
             models:
               - added|modified: 'models/**/_*.yml'
+            sql:
+              - 'models/**/*.sql'
 
       - name: Properties Validations
+        # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         run: |
           set -eux
           # Check mandatory fields (name, desccription, and columns)
-          yq eval -e '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval \
+            '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
           # Check name is not empty
-          yq eval -e '.models.[0].name | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval \
+            '.models.[0].name | length > 0' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
           # Check description is not empty
-          yq eval -e '.models.[0].description | length > 0' ${{ steps.get_file_changes.outputs.models_files }}
+          yq eval \
+            '.models.[0].description | length > 0' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
