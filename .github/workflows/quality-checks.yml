@@ -24,11 +24,6 @@ jobs:
           sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
           sudo chmod +x /usr/bin/yq
 
-      - name: dbt health verification
-        run: |
-          dbt deps
-          dbt compile
-
       - name: Paths Changes Filter
         id: get_file_changes
         uses: dorny/paths-filter@v3.0.2

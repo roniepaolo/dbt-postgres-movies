@@ -4,21 +4,21 @@ sources:
   - name: bronze
     schema: raw
     tables:
-      - name: credits
-        columns:
-          - name: cast
-            data_type: text
-          - name: crew
-            data_type: text
-          - name: id
-            data_type: integer
-
-      - name: keywords
-        columns:
-          - name: id
-            data_type: bigint
-          - name: keywords
-            data_type: text
+      # - name: credits
+      #   columns:
+      #     - name: cast
+      #       data_type: text
+      #     - name: crew
+      #       data_type: text
+      #     - name: id
+      #       data_type: integer
+      #
+      # - name: keywords
+      #   columns:
+      #     - name: id
+      #       data_type: bigint
+      #     - name: keywords
+      #       data_type: text
 
       - name: links
         columns:
@@ -29,84 +29,84 @@ sources:
           - name: tmdbid
             data_type: integer
 
-      - name: links_small
-        columns:
-          - name: movieid
-            data_type: integer
-          - name: imdbid
-            data_type: integer
-          - name: tmdbid
-            data_type: integer
-
-      - name: movies_metadata
-        columns:
-          - name: adult
-            data_type: boolean
-          - name: belongs_to_collection
-            data_type: text
-          - name: budget
-            data_type: bigint
-          - name: genres
-            data_type: text
-          - name: homepage
-            data_type: text
-          - name: id
-            data_type: bigint
-          - name: imdb_id
-            data_type: text
-          - name: original_language
-            data_type: text
-          - name: original_title
-            data_type: text
-          - name: overview
-            data_type: text
-          - name: popularity
-            data_type: numeric
-          - name: poster_path
-            data_type: text
-          - name: production_companies
-            data_type: text
-          - name: production_countries
-            data_type: text
-          - name: release_date
-            data_type: text
-          - name: revenue
-            data_type: bigint
-          - name: runtime
-            data_type: numeric
-          - name: spoken_languages
-            data_type: text
-          - name: status
-            data_type: text
-          - name: tagline
-            data_type: text
-          - name: title
-            data_type: text
-          - name: video
-            data_type: boolean
-          - name: vote_average
-            data_type: numeric
-          - name: vote_count
-            data_type: bigint
-
-      - name: ratings
-        columns:
-          - name: userid
-            data_type: integer
-          - name: movieid
-            data_type: integer
-          - name: rating
-            data_type: real
-          - name: timestamp
-            data_type: integer
-
-      - name: ratings_small
-        columns:
-          - name: userid
-            data_type: integer
-          - name: movieid
-            data_type: integer
-          - name: rating
-            data_type: real
-          - name: timestamp
-            data_type: integer
+      # - name: links_small
+      #   columns:
+      #     - name: movieid
+      #       data_type: integer
+      #     - name: imdbid
+      #       data_type: integer
+      #     - name: tmdbid
+      #       data_type: integer
+      #
+      # - name: movies_metadata
+      #   columns:
+      #     - name: adult
+      #       data_type: boolean
+      #     - name: belongs_to_collection
+      #       data_type: text
+      #     - name: budget
+      #       data_type: bigint
+      #     - name: genres
+      #       data_type: text
+      #     - name: homepage
+      #       data_type: text
+      #     - name: id
+      #       data_type: bigint
+      #     - name: imdb_id
+      #       data_type: text
+      #     - name: original_language
+      #       data_type: text
+      #     - name: original_title
+      #       data_type: text
+      #     - name: overview
+      #       data_type: text
+      #     - name: popularity
+      #       data_type: numeric
+      #     - name: poster_path
+      #       data_type: text
+      #     - name: production_companies
+      #       data_type: text
+      #     - name: production_countries
+      #       data_type: text
+      #     - name: release_date
+      #       data_type: text
+      #     - name: revenue
+      #       data_type: bigint
+      #     - name: runtime
+      #       data_type: numeric
+      #     - name: spoken_languages
+      #       data_type: text
+      #     - name: status
+      #       data_type: text
+      #     - name: tagline
+      #       data_type: text
+      #     - name: title
+      #       data_type: text
+      #     - name: video
+      #       data_type: boolean
+      #     - name: vote_average
+      #       data_type: numeric
+      #     - name: vote_count
+      #       data_type: bigint
+      #
+      # - name: ratings
+      #   columns:
+      #     - name: userid
+      #       data_type: integer
+      #     - name: movieid
+      #       data_type: integer
+      #     - name: rating
+      #       data_type: real
+      #     - name: timestamp
+      #       data_type: integer
+      #
+      # - name: ratings_small
+      #   columns:
+      #     - name: userid
+      #       data_type: integer
+      #     - name: movieid
+      #       data_type: integer
+      #     - name: rating
+      #       data_type: real
+      #     - name: timestamp
+      #       data_type: integer
