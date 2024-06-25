@@ -53,3 +53,19 @@ jobs:
           yq eval \
             '.models.[0].description | length > 0' \
             ${{ steps.get_file_changes.outputs.models_files }} -e
+          # Check if columns has name
+          yq eval \
+            '[.models.[0].columns[] | has("name")] | all' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
+          # Check if columns has description
+          yq eval \
+            '[.models.[0].columns[] | has("description")] | all' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
+          # Check if column name is not empty
+          yq eval \
+            '.models.[0].columns | all_c(.name | length > 0)' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
+          # Check if column description is not empty
+          yq eval \
+            '.models.[0].columns | all_c(.description | length > 0)' \
+            ${{ steps.get_file_changes.outputs.models_files }} -e
