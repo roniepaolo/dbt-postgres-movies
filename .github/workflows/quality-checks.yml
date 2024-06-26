@@ -25,6 +25,7 @@ jobs:
           pip install dbt-core dbt-snowflake pre-commit
           sudo wget $YQ_VERSION -O /usr/bin/yq
           sudo chmod +x /usr/bin/yq
+          dbt parse
 
       - name: Paths Changes Filter
         id: get_file_changes
@@ -34,8 +35,6 @@ jobs:
           filters: |
             models:
               - added|modified: 'models/**/_*.yml'
-            sql:
-              - 'models/**/*.sql'
 
       - name: Properties Validations
         # if: ${{ steps.get_file_changes.outputs.models == 'true' }}

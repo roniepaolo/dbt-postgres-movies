@@ -13,12 +13,12 @@ sources:
       #     - name: id
       #       data_type: integer
       #
-      # - name: keywords
-      #   columns:
-      #     - name: id
-      #       data_type: bigint
-      #     - name: keywords
-      #       data_type: text
+      - name: keywords
+        columns:
+          - name: id
+            data_type: bigint
+          - name: keywords
+            data_type: text
 
       - name: links
         columns:
