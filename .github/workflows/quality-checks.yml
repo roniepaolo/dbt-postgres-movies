@@ -29,5 +29,5 @@ jobs:
               - added|modified: 'models/**/_*.yml'
 
       - name: Properties Validations
-        if: ${{ steps.get_file_changes.outputs.models == 'true' }}
+        # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         run: validations.sh ${{ steps.get_file_changes.outputs.models_files }}
