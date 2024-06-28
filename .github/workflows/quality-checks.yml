@@ -29,34 +29,5 @@ jobs:
               - added|modified: 'models/**/_*.yml'
 
       - name: Properties Validations
-        # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
-        run: |
-          set -eux
-          # Check mandatory fields (name, desccription, and columns)
-          yq eval \
-            '["name", "description", "columns"] - (.models.[0] | keys) | length == 0' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check name is not empty
-          yq eval \
-            '.models.[0].name | length > 0' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check description is not empty
-          yq eval \
-            '.models.[0].description | length > 0' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check if columns has name
-          yq eval \
-            '[.models.[0].columns[] | has("name")] | all' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check if columns has description
-          yq eval \
-            '[.models.[0].columns[] | has("description")] | all' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check if column name is not empty
-          yq eval \
-            '.models.[0].columns | all_c(.name | length > 0)' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
-          # Check if column description is not empty
-          yq eval \
-            '.models.[0].columns | all_c(.description | length > 0)' \
-            ${{ steps.get_file_changes.outputs.models_files }} -e
+        if: ${{ steps.get_file_changes.outputs.models == 'true' }}
+        run: validations.sh ${{ steps.get_file_changes.outputs.models_files }}
