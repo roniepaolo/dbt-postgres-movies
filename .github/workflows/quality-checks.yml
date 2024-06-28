@@ -32,6 +32,6 @@ jobs:
         # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         run: |
           ls -lha
-          chmod +x validations.sh
+          sudo chmod +x validations.sh
           pwd
           # validations.sh ${{ steps.get_file_changes.outputs.models_files }}
