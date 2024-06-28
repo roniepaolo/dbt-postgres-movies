@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: kaggle__keywords
+    description: Table of keywords
+    columns:
+      - name: id
+      - name: keywords
+        description: hola

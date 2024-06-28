@@ -6,6 +6,5 @@ models:
     columns:
       - name: movieid
       - name: imdbid
-        description: hola
       - name: tmdbid
         description: hola
