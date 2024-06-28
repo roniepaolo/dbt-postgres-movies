@@ -31,8 +31,5 @@ jobs:
       - name: Properties Validations
         # if: ${{ steps.get_file_changes.outputs.models == 'true' }}
         run: |
-          ls -lha
           chmod +x validations.sh
-          ls -lha
-          pwd
-          # validations.sh ${{ steps.get_file_changes.outputs.models_files }}
+          ./validations.sh ${{ steps.get_file_changes.outputs.models_files }}
