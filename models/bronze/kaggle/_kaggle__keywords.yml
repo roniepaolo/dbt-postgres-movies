@@ -6,4 +6,3 @@ models:
     columns:
       - name: id
       - name: keywords
-        description: hola
