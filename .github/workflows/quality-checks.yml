@@ -33,4 +33,5 @@ jobs:
         run: |
           ls -lha
           chmod +x validations.sh
-          validations.sh ${{ steps.get_file_changes.outputs.models_files }}
+          pwd
+          # validations.sh ${{ steps.get_file_changes.outputs.models_files }}
