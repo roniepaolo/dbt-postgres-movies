@@ -12,20 +12,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
       - name: Install packages
         env:
           YQ_VERSION: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         run: |
-          python -m pip install --upgrade pip
-          pip install dbt-core dbt-snowflake pre-commit
           sudo wget $YQ_VERSION -O /usr/bin/yq
           sudo chmod +x /usr/bin/yq
-          dbt parse
 
       - name: Paths Changes Filter
         id: get_file_changes
