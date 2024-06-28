@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo xtrace
+set -eux
 
 if [ "$#" -lt 1 ]; then
 	echo "Usage: $0 <models_files>..."
