@@ -3,6 +3,7 @@
 set -eux
 
 if [ "$#" -lt 1 ]; then
+	echo "No models read."
 	echo "Usage: $0 <models_files>..."
 	exit 1
 fi
