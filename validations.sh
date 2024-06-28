@@ -15,7 +15,7 @@ models_files="$*"
 echo "Check mandatory fields (name, description, and columns)"
 yq eval \
 	'["name", "description", "columns"] - (.models.[0] | keys) | length == 0' \
-	$models_files --exit-status --no-doc
+	$models_files --exit-status --no-doc -P
 
 echo "Check that the name is not empty"
 yq eval \
