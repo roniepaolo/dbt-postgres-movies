@@ -7,6 +7,6 @@ models:
       - name: movieid
         description: chao
       - name: imdbid
-        description: holax
+        description: holaxx
       - name: tmdbid
         description: holaxx
