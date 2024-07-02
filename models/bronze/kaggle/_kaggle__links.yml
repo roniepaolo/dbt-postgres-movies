@@ -5,7 +5,7 @@ models:
     description: Table of movie links
     columns:
       - name: movieid
-        description: chao
+        description: chaox
       - name: imdbid
         description: holaxx
       - name: tmdbid

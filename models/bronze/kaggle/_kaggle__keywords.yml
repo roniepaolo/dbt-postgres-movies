@@ -5,6 +5,6 @@ models:
     description: Table of keywords
     columns:
       - name: id
-        description: holaxx
+        description: holaxxx
       - name: keywords
         description: holaxx
